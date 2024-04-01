@@ -55,28 +55,4 @@ const handlerSignup = (e) => {
 
 }
 
-// const displyProfile = (data) => { 
-//     // document.getElementById("profile").innerHTML = ""
-//     data.map((ele) => { 
-//         let img = document.createElement("img")
-//         img.src = ele.img
-//         let country = document.createElement("h3")
-//         country.innerHTML = `Country: ${ele.country}`
-//         let button = document.createElement("button")
-//         button.setAttribute("class", "btn btn-primary btn-lg btn-block")
-//         button.setAttribute("id", "btn-profile")
-//         button.innerHTML = "Log Out"
-//         let div = document.createElement("div")
-//         div.setAttribute("class", "child-box mx-3")
-//         div.append(img, country, button)
-//         document.getElementById("profile").append("div")
-//     })
-// }
-// displyProfile(users)
-// const handlerProfile = (e) => { 
-//     e.preventDefault();
-//     displyProfile()
-// }
-
-// document.getElementById("login-form").addEventListener("submit", handlerProfile)
 document.getElementById("signUp-form").addEventListener("submit", handlerSignup);

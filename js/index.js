@@ -108,7 +108,7 @@ document.getElementById("uk").addEventListener("click", () => handlerFilter("UK"
 let isLogIn = JSON.parse(localStorage.getItem("isLogIn")) || false;
 
 if (isLogIn === true) {
-    document.getElementById("login-btn").innerHTML = "Login Out";
+    document.getElementById("login-btn").innerHTML = "Log Out";
     console.log(isLogIn);
 }
 else { 
