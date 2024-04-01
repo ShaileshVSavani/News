@@ -7,13 +7,13 @@ const displayNews = (data) => {
     document.getElementById("box").innerHTML = ""
     data.map((ele) => {
         console.log(ele);
-        let title = document.createElement("h2")
+        let title = document.createElement("h4")
         title.innerHTML = `Title: ${ele.title}`;
         let img = document.createElement("img")
         img.src = ele.img;
         let content = document.createElement("p")
         content.innerHTML = `Content: ${ele.content}`;
-        let country = document.createElement("h4")
+        let country = document.createElement("h6")
         country.innerHTML = `Country: ${ele.country}`;
         let div = document.createElement("div")
         div.setAttribute("class", "child-box mx-3" )
@@ -45,29 +45,6 @@ const handlerFilter = (val) => {
     console.log(val)
     // console.log(news)
 }
-
-
-
-// const displayUserProfile = () => {
-//     let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || [];
-//     console.log("Loggedin",loggedInUser); // Check if user data is retrieved successfully
-//     console.log("Profile-check");
-//     if (loggedInUser) {
-//         console.log(loggedInUser)
-//         let profileDiv = document.getElementById("profile");
-//         profileDiv.innerHTML = `
-//             <img src="${loggedInUser[0].img}" alt="Profile Image">
-//             <h5 class="mt-3">Username: ${loggedInUser[0].username}</h5>
-          
-//             <p>Country: ${loggedInUser[0].country}</p>
-//             <button id="logout-btn" class="btn btn-danger">Logout</button>
-//         `;
-//     }
-// };
-
-// displayUserProfile();
-
-
 
 const logout = () => {
     localStorage.removeItem("loggedInUser");
