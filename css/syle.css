@@ -41,5 +41,13 @@ img{
     width:15%;
 }
 #profile{
-    padding: 20px;
+    padding: 15px;
+   
+}
+.profile-content{
+    border: 1px solid #5754543a;
+    border-radius: 15px;
+    padding: 10px;
+  
+    box-shadow:0 0 10px rgba(80, 79, 79, 0.3);
 }

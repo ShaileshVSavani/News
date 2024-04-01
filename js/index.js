@@ -1,5 +1,5 @@
 const news = JSON.parse(localStorage.getItem("news")) || [];
-const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || [];
+let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || [];
 console.log(news)
 console.log(loggedInUser)
 
@@ -48,24 +48,72 @@ const handlerFilter = (val) => {
 
 
 
+// const displayUserProfile = () => {
+//     let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || [];
+//     console.log("Loggedin",loggedInUser); // Check if user data is retrieved successfully
+//     console.log("Profile-check");
+//     if (loggedInUser) {
+//         console.log(loggedInUser)
+//         let profileDiv = document.getElementById("profile");
+//         profileDiv.innerHTML = `
+//             <img src="${loggedInUser[0].img}" alt="Profile Image">
+//             <h5 class="mt-3">Username: ${loggedInUser[0].username}</h5>
+          
+//             <p>Country: ${loggedInUser[0].country}</p>
+//             <button id="logout-btn" class="btn btn-danger">Logout</button>
+//         `;
+//     }
+// };
+
+// displayUserProfile();
+
+
+
+const logout = () => {
+    localStorage.removeItem("loggedInUser");
+    localStorage.setItem("isLogIn", false);
+    window.location.href = "/pages/login.html";
+    clearUI(); // Clear UI after logout
+};
+
+const clearUI = () => {
+    document.getElementById("profile").innerHTML = ""; // Clear profile UI
+    document.getElementById("box").innerHTML = ""; // Clear news UI
+};
+
 const displayUserProfile = () => {
-    let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-    console.log(loggedInUser); // Check if user data is retrieved successfully
+    // let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || [];
+    console.log("Loggedin", loggedInUser); // Check if user data is retrieved successfully
     console.log("Profile-check");
-    if (loggedInUser) {
+    if (loggedInUser && loggedInUser.length > 0) {
+        console.log(loggedInUser);
         let profileDiv = document.getElementById("profile");
         profileDiv.innerHTML = `
-            <img src="${loggedInUser.img}" alt="Profile Image">
-            <p>Username: ${loggedInUser.username}</p>
-            <p>Email: ${loggedInUser.email}</p>
-            <p>Country: ${loggedInUser.country}</p>
+            <img src="${loggedInUser[0].img}" alt="Profile Image">
+            <h6 class="mt-3">Username: ${loggedInUser[0].username}</h6>
+           
+            <p>Country: ${loggedInUser[0].country}</p>
             <button id="logout-btn" class="btn btn-danger">Logout</button>
         `;
+        document.getElementById("logout-btn").addEventListener("click", logout); // Add event listener to logout button
     }
 };
 
+displayUserProfile();
 
- displayUserProfile();
+// Function to check login status and update UI
+const checkLoginStatus = () => {
+    let isLogIn = JSON.parse(localStorage.getItem("isLogIn")) || false;
+
+    if (!isLogIn) {
+        window.location.href = "/pages/login.html"; // Redirect to login page if not logged in
+        clearUI(); // Clear UI if not logged in
+    }
+};
+
+checkLoginStatus();
+
+
 
 document.getElementById("search-form").addEventListener("submit", handlerSearch)
 document.getElementById("usa").addEventListener("click", () => handlerFilter("USA"))

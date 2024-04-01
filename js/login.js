@@ -1,5 +1,5 @@
-const users = JSON.parse(localStorage.getItem('users')) || [];
-const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || [];
+let users = JSON.parse(localStorage.getItem('users')) || [];
+let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || [];
 
 const handlerLogin = (e) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ const handlerLogin = (e) => {
         localStorage.setItem("isLogIn", true)
         localStorage.setItem("loggedInUser", JSON.stringify(userExist))
         window.location.href = "/index.html"
-        displayUserProfile();
+      
     }
     else {
         alert("Invalid email or password. Please try again.");
