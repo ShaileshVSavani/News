@@ -24,5 +24,5 @@ if (isLogIn === true) {
     console.log(isLogIn);
 }
 else { 
-    // window.location.href = "/pages/login.html"
+    window.location.href = "/pages/login.html"
 }
